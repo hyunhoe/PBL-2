@@ -13,5 +13,5 @@ public interface TAX
      * @param  y 메소드의 샘플 파라미터
      * @return   sampleMethod의 반환값
      */
-    int sampleMethod(int y);
+    double calculateTax();
 }
