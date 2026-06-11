@@ -42,9 +42,8 @@ public class AlcoholicDrinks extends Products implements TAX
     public double calculateLiquorTax()
     {
         double liquortax;
-        double basePrice;
         if(typeNo == 1){
-            liquortax = baseprice * 0.72;
+            liquortax = price * 0.72;
         }
         else if(typeNo == 2){
             liquortax = 442.85;
@@ -76,11 +75,10 @@ public class AlcoholicDrinks extends Products implements TAX
     public double calculateVAT()
     {
         double VAT;
-        double basePrice = ?;
         double liquorTax = calculateLiquorTax();
         double eduTax = calculateEduTax();
         if (typeNo == 1){
-            VAT = (basePrice + liquorTax + eduTax) * 0.10;
+            VAT = (price + liquorTax + eduTax) * 0.1;
         } else if (typeNo == 2){
             VAT = (442.85 + eduTax) * 0.1;
         }
@@ -96,7 +94,6 @@ public class AlcoholicDrinks extends Products implements TAX
     public double calculateTax()
     {
         double VAT = calculateVAT();
-        double basePrice = ?;
         double liquorTax = calculateLiquorTax();
         double eduTax = calculateEduTax();
 
@@ -115,9 +112,8 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public double calculatePayment()
     {
-        double basePrice = ?;
         double taxAlcohol = calculateTax();
-        double finalPrice = basePrice + taxAlcohol;
+        double finalPrice = price + taxAlcohol;
         return finalPrice;
     }
 }
