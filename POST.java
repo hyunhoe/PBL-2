@@ -62,7 +62,7 @@ public class POST
         productDB[5][2] = 1818.1818;
         productNameDB[5] = "칠성)칠성사이다제로355ml";
 
-        productCount = 6;
+        productCount = 6; // 등록한 상품 개수
     }
     
     /**
@@ -73,8 +73,14 @@ public class POST
      */
     public int checkBarcode(int code)
     {
-        // 여기에 코드를 작성하세요.
-        return code;
+        int row = 0;
+        while(row < productCount){
+            if(code == productDB[row][0]){
+                return row;
+            }
+            row++;
+        }
+        
     }
     
     /**
