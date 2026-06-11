@@ -68,8 +68,8 @@ public class POST
     /**
      * 입력한 바코드가 존재하는지 확인하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param code
+     * @return -1
      */
     public int checkBarcode(int code)
     {
@@ -86,8 +86,8 @@ public class POST
     /**
      * 상품(음료, 주류) 객체 생성하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param row
+     * @return product
      */
     public Products createProduct(int row)
     {
@@ -110,12 +110,10 @@ public class POST
     /**
      * 결제 끝난 상품 정보 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param product, quantity, totalPrice
      */
     public void saveSaleDB(Products product, int quantity, int totalPrice)
     {
-        // 여기에 코드를 작성하세요.
         int code = product.getCode();
         String productName = product.getName();
         double unitPrice = product.calculatePayment();
@@ -131,32 +129,26 @@ public class POST
     /**
      * 판매 배열 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @return saleDB
      */
     public Sale[] getSaleDB()
     {
-        // 여기에 코드를 작성하세요.
         return saleDB;
     }
 
     /**
      * 판매 건수가 얼마인지 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @return saleCount
      */
     public int SaleCount()
     {
-        // 여기에 코드를 작성하세요.
         return saleCount;
     }
 
     /**
      * 결제를 진행하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
      */
     public void calculateAllTotal()
     {
@@ -234,12 +226,10 @@ public class POST
     /**
      * 입력된 상품 정보를 화면에 출력하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param inputProducts, inputQuantities, inputCount
      */
     public void printProductInfo(Products[] inputProducts, int[] inputQuantities, int inputCount)
-    { 
-        // 여기에 코드를 작성하세요.
+    {
         int unitPrice;
         int itemTotal;
         System.out.println();
@@ -261,8 +251,8 @@ public class POST
     /**
      * 모든상품의 결제금액의 합을 계산하는 메소드 
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param  inputProducts, inputQuantities, inputCount
+     * @return totalAmount
      */
     public double calculateTotalPrice(Products[] inputProducts, int[] inputQuantities, int inputCount)
     {
@@ -278,8 +268,8 @@ public class POST
     /**
      * 모든 상품의 세금 합계 계산하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param  inputProducts, inputQuantities, inputCount
+     * @return totalVAT
      */
     public double calculateAllVAT(Products[] inputProducts, int[] inputQuantities, int inputCount)
     {
@@ -298,12 +288,12 @@ public class POST
     /**
      * 거스름돈 계산하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param receivedAmount, totalAmount
+     * @return balance
      */
     public double calculateBalance(int receivedAmount, int totalAmount)
     {
-        // 여기에 코드를 작성하세요.
+
         int balance = receivedAmount - totalAmount;
 
         return balance;
@@ -312,12 +302,10 @@ public class POST
     /**
      * 판매한 상품들 DB에 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param  inputProducts, inputQuantities, inputCount 
      */
     public void saveAllSaleDB(Products[] inputProducts, int[] inputQuantities, int inputCount)
     {
-        // 여기에 코드를 작성하세요.
         int totalPrice;
 
         for(int i = 0 ; i < inputCount ; i++){
@@ -331,13 +319,11 @@ public class POST
     /**
      * 영수증 출력하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param inputProducts, inputQuantities, inputCount, receivedAmount, totalAmount, balance
      */
     public void printReceipt(Products[] inputProducts, int[] inputQuantities, int inputCount,
     int receivedAmount, int totalAmount, int balance)
     {
-        // 여기에 코드를 작성하세요.
         int unitPrice;
         int itemTotal;
         int vat;
@@ -374,13 +360,10 @@ public class POST
 
     /**
      * 결제 과정 실행하는 메소드
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * 
      */
     public void runPost()
     {
-        // 여기에 코드를 작성하세요.
         calculateAllTotal();
     }
 }
