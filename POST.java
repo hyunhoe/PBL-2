@@ -136,7 +136,7 @@ public class POST
     public Sale[] getSaleDB()
     {
         // 여기에 코드를 작성하세요.
-        return x + y;
+        return saleDB;
     }
     
     /**
@@ -148,7 +148,7 @@ public class POST
     public int SaleCount()
     {
         // 여기에 코드를 작성하세요.
-        return x + y;
+        return saleCount;
     }
     
     /**
