@@ -91,8 +91,17 @@ public class POST
      */
     public Products createProduct()
     {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+        int row;
+        int code = productDB[row][0];
+        int typeNo = productDB[row][1];
+        String name = productNameDB[row];
+        if (typeNo == 0){
+            
+        } else if (typeNo == 1){
+            
+        } else{
+            
+        }
     }
     
     /**
