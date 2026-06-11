@@ -89,19 +89,22 @@ public class POST
      * @param  y  메소드의 샘플 파라미터
      * @return    x 더하기 y의 결과값을 반환
      */
-    public Products createProduct()
+    public Products createProduct(int row)
     {
-        int row;
-        int code = productDB[row][0];
-        int typeNo = productDB[row][1];
+        int code = (int)productDB[row][0];
+        int typeNo = (int)productDB[row][1];
         String name = productNameDB[row];
+        double price = productDB[row][2];
+        Products product;
+        
         if (typeNo == 0){
-            
+            product = new Beverages(code, name, price);
         } else if (typeNo == 1){
-            
+            product = new AlcoholicDrinks(code, name, price, "소주", 1);
         } else{
-            
+            product = new AlcoholicDrinks(code, name, price, "맥주", 2);
         }
+        return product;
     }
     
     /**

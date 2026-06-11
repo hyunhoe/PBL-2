@@ -7,14 +7,14 @@
  */
 public abstract class Products 
 {
-    protected String code;
+    protected int code;
     protected String name;
-    protected int price;
+    protected double price;
 
     /**
      * Products 클래스의 객체 생성자
      */
-    public Products(String code, String name, int price)
+    public Products(int code, String name, double price)
     {
         this.code = code;
         this.name = name;
@@ -26,7 +26,7 @@ public abstract class Products
      *
      * @return code 
      */
-    public String getCode()
+    public int getCode()
     {
         return code;
     }
@@ -46,7 +46,7 @@ public abstract class Products
      *
      * @return price 
      */
-    public int getPrice()
+    public double getPrice()
     {
         return price;
     }

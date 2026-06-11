@@ -14,7 +14,7 @@ public class AlcoholicDrinks extends Products implements TAX
     /**
      * AlcoholicDrinks 클래스의 객체 생성자
      */
-    public AlcoholicDrinks(String code, String name, int price, String AlcoholType, int typeNo)
+    public AlcoholicDrinks(int code, String name, double price, String AlcoholType, int typeNo)
     {
         super(code, name, price);
         this.AlcoholType = AlcoholType;

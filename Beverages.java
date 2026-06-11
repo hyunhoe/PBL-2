@@ -13,7 +13,7 @@ public class Beverages extends Products implements TAX
      * Beverages 클래스의 객체 생성자
      * 상품코드, 상품명, 가격을 슈퍼클래스인 Products에 전달하고, 부가가치세를 10%로 설정 
      */
-    public Beverages(String code, String name, int price)
+    public Beverages(int code, String name, double price)
     {
         super(code, name, price);
         taxValue = 0.1;
