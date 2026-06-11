@@ -7,31 +7,62 @@
  */
 public class POST
 {
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
     private double[][] productDB;
     private String[] productNameDB;
     private Sale[] saleDB;
     private int productCount;
+    private int saleCount;
     
     /**
      * POST 클래스의 객체 생성자
      */
     public POST()
     {
-        // 인스턴스 변수 초기화
-        x = 0;
+        productDB = new double[6][3]; 
+        productNameDB = new String[6];
+        saleDB = new Sale[20];
+        
+        productCount = 0;
+        saleCount = 0;
+        saveProductDB();
     }
 
     /**
-     * 상품DB에 바코드, 상품명, 가격, 종류번호를 저장하는 메소드
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * 상품DB에 상품 정보를 저장하는 메소드 
+     * 
      */
-    public void saveProductDB()
-    {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+    public void saveProductDB() {
+        productDB[0][0] = 1017;
+        productDB[0][1] = 1;
+        productDB[0][2] = 892.1863;
+        productNameDB[0] = "참이슬(후)";
+
+        productDB[1][0] = 1024;
+        productDB[1][1] = 2;
+        productDB[1][2] = 2166.7245;
+        productNameDB[1] = "카스캔500ml";
+
+        productDB[2][0] = 1115;
+        productDB[2][1] = 1;
+        productDB[2][2] = 1549.5868;
+        productNameDB[2] = "하이트)진로16.0도페트640ML";
+
+        productDB[3][0] = 7741;
+        productDB[3][1] = 0;
+        productDB[3][2] = 2454.5455;
+        productNameDB[3] = "티오피)더블랙캔275ml";
+
+        productDB[4][0] = 13;
+        productDB[4][1] = 0;
+        productDB[4][2] = 1818.1818;
+        productNameDB[4] = "칠성)펩시콜라355ml";
+
+        productDB[5][0] = 925;
+        productDB[5][1] = 0;
+        productDB[5][2] = 1818.1818;
+        productNameDB[5] = "칠성)칠성사이다제로355ml";
+
+        productCount = 6;
     }
     
     /**

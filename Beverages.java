@@ -26,6 +26,8 @@ public class Beverages extends Products implements TAX
      */
     public double calculateVAT()
     {
+        taxValue = 0.1;
+        
         double vat =  price * taxValue;
         return vat;
     }

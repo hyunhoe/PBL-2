@@ -1,6 +1,6 @@
 /**
  * Products - 모든 상품의 공통 정보를 저장하는 추상 슈퍼클래스 
- * 상품코드, 상품명, 가격 정보를 가지며 Beverages와 AlcoholicDrinks같은 서브 클래스들이 상속받아 사용한다. 
+ * 상품코드, 상품명, 가격 정보를 가지며 서브클래스(Beverages와 AlcoholicDrinks)가 상속받아 사용한다. 
  *
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
