@@ -7,7 +7,6 @@
  */
 public class AlcoholicDrinks extends Products implements TAX
 {
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
     private String AlcoholType;
     private double taxAlcohol;
     private int typeNo; // 1일때 소주, 2일때 맥주
@@ -17,7 +16,6 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public AlcoholicDrinks(String code, String name, int price, String AlcoholType, int typeNo)
     {
-        // 인스턴스 변수 초기화
         super(code, name, price);
         this.AlcoholType = AlcoholType;
         this.taxAlcohol = taxAlcohol;
@@ -32,7 +30,6 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public String getAlcoholType()
     {
-        // 여기에 코드를 작성하세요.
         return this.AlcoholType;
     }
 
@@ -44,7 +41,6 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public double calculateLiquorTax()
     {
-        // 여기에 코드를 작성하세요.
         double liquortax;
         double basePrice;
         if(typeNo == 1){
@@ -64,8 +60,6 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public double calculateEduTax()
     {
-        // 여기에 코드를 작성하세요.
-
         double liquorTax = calculateLiquorTax();
         double eduTax = liquorTax * 0.3;
 
@@ -101,7 +95,6 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public double calculateTax()
     {
-        // 여기에 코드를 작성하세요.
         double VAT = calculateVAT();
         double basePrice = ?;
         double liquorTax = calculateLiquorTax();
@@ -122,7 +115,6 @@ public class AlcoholicDrinks extends Products implements TAX
      */
     public double calculatePayment()
     {
-        // 여기에 코드를 작성하세요
         double basePrice = ?;
         double taxAlcohol = calculateTax();
         double finalPrice = basePrice + taxAlcohol;

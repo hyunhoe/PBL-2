@@ -26,7 +26,6 @@ public class Beverages extends Products implements TAX
      */
     public double calculateVAT()
     {
-        // 여기에 코드를 작성하세요
         double vat =  price * taxValue;
         return vat;
     }
@@ -38,7 +37,6 @@ public class Beverages extends Products implements TAX
      */
     public double calculateTax()
     {
-        // 여기에 코드를 작성하세요
         double tax = calculateVAT();
         return tax;
     }
@@ -50,7 +48,6 @@ public class Beverages extends Products implements TAX
      */
     public double calculatePayment()
     {
-        // 여기에 코드를 작성하세요
         double finalPrice = price + calculateTax();
         return finalPrice;
     }
