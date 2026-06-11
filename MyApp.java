@@ -8,9 +8,9 @@
 public class MyApp
 {
     public static void main(String[] args){
-
+        MyApp app = new MyApp();
+        app.runPost();
     }
-
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
      *
@@ -20,7 +20,7 @@ public class MyApp
     public void runPost()
     {
         // 여기에 코드를 작성하세요
-        
+        POST post = new POST();
+        post.runPost();
     }
-
 }
