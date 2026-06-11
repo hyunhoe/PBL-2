@@ -1,6 +1,6 @@
-
 /**
- * Products 클래스의 설명을 작성하세요.
+ * Products - 모든 상품의 공통 정보를 저장하는 추상 슈퍼클래스 
+ * 상품코드, 상품명, 가격 정보를 가지며 Beverages와 AlcoholicDrinks같은 서브 클래스들이 상속받아 사용한다. 
  *
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
@@ -22,42 +22,44 @@ public abstract class Products
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 바코드 번호를 반환하는 메소드 
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return code 
      */
     public String getCode()
     {
-        // 여기에 코드를 작성하세요
         return code;
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 상품명을 반환하는 메소드 
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return name 
      */
     public String getName()
     {
-        // 여기에 코드를 작성하세요
         return name;
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 상품 가격을 반환하는 메소드 
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @return price 
      */
     public int getPrice()
     {
-        // 여기에 코드를 작성하세요
         return price;
     }
 
+    /**
+     * 상품의 부가가치세를 계산하는 추상 메소드 
+     *
+     */
     public abstract double calculateVAT();
+
+    /**
+     * 상품의 최종 결제 금액을 계산하는 추상 메소드 
+     *
+     */
     public abstract double calculatePayment();
-    
 }
