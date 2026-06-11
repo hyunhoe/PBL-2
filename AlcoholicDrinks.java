@@ -9,7 +9,7 @@ public class AlcoholicDrinks extends Products implements TAX
 {
     private String AlcoholType;
     private double taxAlcohol;
-    private int typeNo; // 1일때 소주, 2일때 맥주
+    private int typeNo; // 1일때 소주 아니면 맥주
 
     /**
      * AlcoholicDrinks 클래스의 객체 생성자
