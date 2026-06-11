@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 /**
  * POST 클래스의 설명을 작성하세요.
  *
@@ -12,7 +12,7 @@ public class POST
     private Sale[] saleDB;
     private int productCount;
     private int saleCount;
-    
+
     /**
      * POST 클래스의 객체 생성자
      */
@@ -21,7 +21,7 @@ public class POST
         productDB = new double[6][3]; 
         productNameDB = new String[6];
         saleDB = new Sale[20];
-        
+
         productCount = 0;
         saleCount = 0;
         saveProductDB();
@@ -64,7 +64,7 @@ public class POST
 
         productCount = 6; // 등록한 상품 개수
     }
-    
+
     /**
      * 입력한 바코드가 존재하는지 확인하는 메소드
      *
@@ -80,9 +80,9 @@ public class POST
             }
             row++;
         }
-        return barcodeIndex;
+        return -1;
     }
-    
+
     /**
      * 상품(음료, 주류) 객체 생성하는 메소드
      *
@@ -96,7 +96,7 @@ public class POST
         String name = productNameDB[row];
         double price = productDB[row][2];
         Products product;
-        
+
         if (typeNo == 0){
             product = new Beverages(code, name, price);
         } else if (typeNo == 1){
@@ -106,7 +106,7 @@ public class POST
         }
         return product;
     }
-    
+
     /**
      * 결제 끝난 상품 정보 저장하는 메소드
      *
@@ -118,25 +118,16 @@ public class POST
         // 여기에 코드를 작성하세요.
         int code = product.getCode();
         String productName = product.getName();
-        int unitPrice = product.calculatePayment();
-        
-        if (saleCount  < saleDB.length){
-            saleDB[saleCount] = new Sale(code, productName, unitPrice, quantity, totalPrice);
-            saleCount++;
-        }else{
-        
-        int code = product.getCode();
-        String productName = product.getName();
         double unitPrice = product.calculatePayment();
-        
-        if(saleCount < saleDB.length){
+
+        if (saleCount  < saleDB.length){
             saleDB[saleCount] = new Sale(code, productName, (int)unitPrice, quantity, totalPrice);
             saleCount++;
-        } else{
+        }else{
             System.out.println("판매DB가 가득 찼습니다.");
         }
     }
-    
+
     /**
      * 판매 배열 반환하는 메소드
      *
@@ -148,7 +139,7 @@ public class POST
         // 여기에 코드를 작성하세요.
         return saleDB;
     }
-    
+
     /**
      * 판매 건수가 얼마인지 반환하는 메소드
      *
@@ -160,7 +151,7 @@ public class POST
         // 여기에 코드를 작성하세요.
         return saleCount;
     }
-    
+
     /**
      * 결제를 진행하는 메소드
      *
@@ -169,7 +160,8 @@ public class POST
      */
     public void calculateAllTotal()
     {
-        // 여기에 코드를 작성하세요.
+        
+        Scanner sc = new Scanner(System.in);
         Products[] inputProducts;
         int[] inputQuantities;
         
@@ -180,84 +172,83 @@ public class POST
         int totalAmount;
         int receivedAmount;
         int balance;
-        
+
         inputProducts = new Products[20];
         inputQuantities = new int[20];
-        
+
         while (true) {
             System.out.print("바코드 뒤자리 입력, 상품 입력 종료는 0: ");
             code = sc.nextInt();
-            
+
             if (code == 0){
                 break;
             }
-            
+
             productIndex = checkBarcode(code);
-            
-            if (prodictIndex == -1){
+
+            if (productIndex == -1){
                 System.out.println("존재하지 않는 바코드입니다.");
-            
+
             }else{
-                Products product = createProduct(prodcutIndex);
-                
+                Products product = createProduct(productIndex);
+
                 System.out.print("수량 입력: ");
                 quantity = sc.nextInt();
-                
+
                 inputProducts[inputCount] = product;
-                inpuQuantities[inputCount] = quantity;
+                inputQuantities[inputCount] = quantity;
                 inputCount++;
-                
+
                 // 상품을 입력 출력
                 printProductInfo(inputProducts, inputQuantities, inputCount);
-                
-                totalAmount = calculateAllTotal(inputProducts, inputQuantities, inputCount);
+
+                totalAmount = (int)calculateTotalPrice(inputProducts, inputQuantities, inputCount);
                 System.out.println("현재 총 결제금액: " + totalAmount + "원");
             }
-            System.out.print();
+            System.out.println();
         }
-        
+
         if (inputCount == 0 ){
             System.out.println("입력된 상품이 없습니다.");
             return;
         }
-        
-        totalAmount = calculateAllTotal(inputProducts, inputQuantities, inputcount);
-        
+
+        totalAmount = (int)calculateTotalPrice(inputProducts, inputQuantities, inputCount);
+
         System.out.println("받은 현금 입력: ");
         receivedAmount = sc.nextInt();
-        
-        balance = calculateBalance(receivedAmount, totalAmount);
-        
+
+        balance = (int)calculateBalance(receivedAmount, totalAmount);
+
         if (balance < 0 ){
             System.out.println("현금이 부족합니다.");
             return;
         }
-        
+
         saveAllSaleDB(inputProducts, inputQuantities, inputCount);
-        
+
         printReceipt(inputProducts, inputQuantities, inputCount, receivedAmount, totalAmount, balance);
-        
+
     }
-    
+
     /**
      * 입력된 상품 정보를 화면에 출력하는 메소드
      *
      * @param  y  메소드의 샘플 파라미터
      * @return    x 더하기 y의 결과값을 반환
      */
-    public void printProductInfo(Product[] inputProducts, int[] inputQuantities, int inputQuantities, int inputCount)
-    {
+    public void printProductInfo(Products[] inputProducts, int[] inputQuantities, int inputCount)
+    { 
         // 여기에 코드를 작성하세요.
-        int i;
         int unitPrice;
         int itemTotal;
         System.out.println();
         System.out.println("===== 입력된 상품 종보  ====");
-        
-        for (i = 0; i < inputCount; i++){
-            unitPrice = inputProducts[i].claculatePayment();
+
+        for (int i = 0; i < inputCount; i++){
+            unitPrice = (int)inputProducts[i].calculatePayment();
             itemTotal = unitPrice * inputQuantities[i];
-            
+
             System.out.println("상품: " + inputProducts[i].getName());
             System.out.println("바코드 뒤자리: " + inputProducts[i].getCode());
             System.out.println("수량: " + inputQuantities[i]);
@@ -266,7 +257,7 @@ public class POST
             System.out.println("--------------------");    
         }
     }
-    
+
     /**
      * 모든상품의 결제금액의 합을 계산하는 메소드 
      *
@@ -278,12 +269,12 @@ public class POST
         // 여기에 코드를 작성하세요.
         int totalAmount = 0;
         for (int i = 0 ; i < inputCount ; i++){
-            totalAmount = totalAmount + inputProducts[i].calculatePayment()*inputQuantities[i];
-            
+            totalAmount = totalAmount + (int)inputProducts[i].calculatePayment()*inputQuantities[i];
+
         }
         return totalAmount;
     }
-    
+
     /**
      * 모든 상품의 세금 합계 계산하는 메소드
      *
@@ -295,15 +286,15 @@ public class POST
         // 여기에 코드를 작성하세요.
         int vat;
         int totalVAT = 0;
-        
+
         for (int i = 0 ; i < inputCount ; i++){
             vat = (int)(inputProducts[i].calculateVAT() + 0.5);
             totalVAT = totalVAT + vat* inputQuantities[i];
         }
-    
+
         return totalVAT;
     }
-    
+
     /**
      * 거스름돈 계산하는 메소드
      *
@@ -314,10 +305,10 @@ public class POST
     {
         // 여기에 코드를 작성하세요.
         int balance = receivedAmount - totalAmount;
-        
+
         return balance;
     }
-    
+
     /**
      * 판매한 상품들 DB에 저장하는 메소드
      *
@@ -328,15 +319,15 @@ public class POST
     {
         // 여기에 코드를 작성하세요.
         int totalPrice;
-        
+
         for(int i = 0 ; i < inputCount ; i++){
-            totalPrice = inputProducts[i].calculatePayment()*inputQuantities[i];
-            
+            totalPrice = (int)inputProducts[i].calculatePayment()*inputQuantities[i];
+
             saveSaleDB(inputProducts[i], inputQuantities[i], totalPrice);
         }
 
     }
-    
+
     /**
      * 영수증 출력하는 메소드
      *
@@ -344,7 +335,7 @@ public class POST
      * @return    x 더하기 y의 결과값을 반환
      */
     public void printReceipt(Products[] inputProducts, int[] inputQuantities, int inputCount,
-      int receivedAmount, int totalAmount, int balance)
+    int receivedAmount, int totalAmount, int balance)
     {
         // 여기에 코드를 작성하세요.
         int unitPrice;
@@ -352,19 +343,19 @@ public class POST
         int vat;
         int itemVAT;
         int totalVAT;
-        
-        totalVAT = calculateAllVAT(inputProducts, inputQuantities, inputCount);
-        
+
+        totalVAT = (int)calculateAllVAT(inputProducts, inputQuantities, inputCount);
+
         System.out.println();
         System.out.println("====== 영수증 ======");
-        
-        for ( int i = 0 ; i < inputCount ; i++ ){
-            unitPrice = inputProducts[i].calculatePayment();
+
+        for (int i = 0 ; i < inputCount ; i++ ){
+            unitPrice = (int)inputProducts[i].calculatePayment();
             itemTotal = unitPrice * inputQuantities[i];
-            
+
             vat = (int)(inputProducts[i].calculateVAT() + 0.5);
             itemVAT = vat * inputQuantities[i];
-            
+
             System.out.println("상품: " + inputProducts[i].getName());
             System.out.println("수량: " + inputQuantities[i]);
             System.out.println("단가: " + unitPrice + "원");
@@ -372,7 +363,7 @@ public class POST
             System.out.println("상품  금액: " + itemTotal + "원");
             System.out.println("------------------------");
         }
-        
+
         System.out.println("총 부가가치세: " + totalVAT + "원");
         System.out.println("총 결제금액: " + totalAmount + "원");
         System.out.println("받은 현금: " + receivedAmount + "원");
@@ -380,7 +371,7 @@ public class POST
         System.out.println("판매정보가 판매DB에 저장되었습니다.");
         System.out.println("====== 결제 종료 =====");
     }
-    
+
     /**
      * 결제 과정 실행하는 메소드
      *
