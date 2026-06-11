@@ -52,12 +52,12 @@ public class POST
         productDB[3][2] = 2454.5455;
         productNameDB[3] = "티오피)더블랙캔275ml";
 
-        productDB[4][0] = 13;
+        productDB[4][0] = 2613;
         productDB[4][1] = 0;
         productDB[4][2] = 1818.1818;
         productNameDB[4] = "칠성)펩시콜라355ml";
 
-        productDB[5][0] = 925;
+        productDB[5][0] = 5925;
         productDB[5][1] = 0;
         productDB[5][2] = 1818.1818;
         productNameDB[5] = "칠성)칠성사이다제로355ml";
