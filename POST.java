@@ -115,8 +115,16 @@ public class POST
      */
     public void saveSaleDB(Products product, int quantity, int totalPrice)
     {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+        int code = product.getCode();
+        String productName = product.getName();
+        double unitPrice = product.calculatePayment();
+        
+        if(saleCount < saleDB.length){
+            saleDB[saleCount] = new Sale(code, productName, (int)unitPrice, quantity, totalPrice);
+            saleCount++;
+        } else{
+            System.out.println("판매DB가 가득 찼습니다.");
+        }
     }
     
     /**
