@@ -45,7 +45,7 @@ public class AlcoholicDrinks extends Products implements TAX
         if(typeNo == 1){
             liquortax = price * 0.72;
         }
-        else if(typeNo == 2){
+        else{
             liquortax = 442.85;
         }
         return liquortax;
@@ -79,7 +79,7 @@ public class AlcoholicDrinks extends Products implements TAX
         double eduTax = calculateEduTax();
         if (typeNo == 1){
             VAT = (price + liquorTax + eduTax) * 0.1;
-        } else if (typeNo == 2){
+        } else{
             VAT = (442.85 + eduTax) * 0.1;
         }
         return VAT;
