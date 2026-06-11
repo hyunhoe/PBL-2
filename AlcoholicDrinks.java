@@ -1,6 +1,6 @@
 
 /**
- * AlcoholicDrinks 클래스의 설명을 작성하세요.
+ * AlcoholicDrinks - 주류 상품을 담당하는 클래스 
  *
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
@@ -25,6 +25,11 @@ public class AlcoholicDrinks extends Products implements TAX
 
     }
 
+    /**
+     * 주류 종류(맥주, 소주)를 반환하는 메소드 
+     *
+     * @return 주류 종류 
+     */
     public String getAlcoholType()
     {
         // 여기에 코드를 작성하세요.
@@ -32,10 +37,10 @@ public class AlcoholicDrinks extends Products implements TAX
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * 주세 계산 메소드 
+     * 소주는 기준가격의 72%를 주세로 계산하고, 맥주는 500ml의 정해진 가격인 442.85원을 주세로 계산한다. 
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @return liquortax
      */
     public double calculateLiquorTax()
     {
@@ -51,6 +56,12 @@ public class AlcoholicDrinks extends Products implements TAX
         return liquortax;
     }
 
+    /**
+     * 주세를 기준으로 교육세를 계산하는 메소드 
+     * 교육세는 주세의 30%로 계산한다. 
+     * 
+     * @return eduTax;
+     */
     public double calculateEduTax()
     {
         // 여기에 코드를 작성하세요.
@@ -61,6 +72,13 @@ public class AlcoholicDrinks extends Products implements TAX
         return eduTax;
     }
 
+    /**
+     * 주류 상품에 적용도되는 부가가치세를 계산하는 메소드
+     * 소주는 원가, 주세, 교육세를 더한 금액의 10%를 부가가치세로 계산한다. 
+     * 맥주는 주세와 교육세를 기준으로 10%의 부가가치세를 계산한다. 
+     * 
+     * @return VAT
+     */
     public double calculateVAT()
     {
         double VAT;
@@ -72,9 +90,15 @@ public class AlcoholicDrinks extends Products implements TAX
         } else if (typeNo == 2){
             VAT = (442.85 + eduTax) * 0.1;
         }
-        return VAT
+        return VAT;
     }
 
+    /**
+     * 주류 상품에 적용되는 전체 세금을 계산하는 메소드 
+     * 주세, 교육세, 부가가치세를 모두 더한 금액 
+     *
+     * @return taxAlcohol
+     */
     public double calculateTax()
     {
         // 여기에 코드를 작성하세요.
@@ -82,19 +106,19 @@ public class AlcoholicDrinks extends Products implements TAX
         double basePrice = ?;
         double liquorTax = calculateLiquorTax();
         double eduTax = calculateEduTax();
-        
+
         double totalTax = liquorTax + eduTax + VAT;
-        
+
         double taxAlcohol = totalTax;
-        
+
         return taxAlcohol;
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * 주류 상품의 최종 결제 금액을 계산하는 메소드 
+     * 최종 결제 금액 = 원가 + 전체 세금 
+     * 
+     * @return finalPrice 
      */
     public double calculatePayment()
     {
