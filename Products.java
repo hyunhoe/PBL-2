@@ -57,5 +57,7 @@ public abstract class Products
         return price;
     }
 
-    public abstract int calculatePayment();
+    public abstract double calculateVAT();
+    public abstract double calculatePayment();
+    
 }

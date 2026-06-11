@@ -17,7 +17,14 @@ public class Beverages extends Products implements TAX
         super(code, name, price);
         taxValue = 0.1;
     }
-
+    
+    public double calculateVAT()
+    {
+        // 여기에 코드를 작성하세요
+        double vat =  price * taxValue;
+        return vat;
+    }
+    
     /**
      * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
      *
@@ -27,7 +34,8 @@ public class Beverages extends Products implements TAX
     public double calculateTax()
     {
         // 여기에 코드를 작성하세요
-        return price * taxValue;
+        double tax = calculateVAT();
+        return tax;
     }
 
     /**
@@ -36,10 +44,11 @@ public class Beverages extends Products implements TAX
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public int calculatePayment()
+    public double calculatePayment()
     {
         // 여기에 코드를 작성하세요
-        return price + (int)calculateTax();
+        double finalPrice = price + calculateTax();
+        return finalPrice;
     }
 
 
