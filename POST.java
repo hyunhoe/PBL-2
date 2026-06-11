@@ -124,6 +124,15 @@ public class POST
             saleDB[saleCount] = new Sale(code, productName, unitPrice, quantity, totalPrice);
             saleCount++;
         }else{
+        
+        int code = product.getCode();
+        String productName = product.getName();
+        double unitPrice = product.calculatePayment();
+        
+        if(saleCount < saleDB.length){
+            saleDB[saleCount] = new Sale(code, productName, (int)unitPrice, quantity, totalPrice);
+            saleCount++;
+        } else{
             System.out.println("판매DB가 가득 찼습니다.");
         }
     }
