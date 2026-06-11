@@ -7,12 +7,12 @@
  */
 public class Sale
 {
-    private int code; // 상품코드
-    private String productName; // 상품이름
-    private int unitPrice; // 개당 가격
-    private int quantity; // 수량
-    private int totalPrice; // 전체 가격
-    
+    private int code;
+    private String productName; 
+    private int unitPrice; 
+    private int quantity; 
+    private int totalPrice;
+
     /**
      * Sale 클래스의 객체 생성자
      */
@@ -34,7 +34,7 @@ public class Sale
     {
         return code;
     }
-    
+
     /**
      * 상품명을 반환하는 메소드 
      *
@@ -44,7 +44,7 @@ public class Sale
     {
         return productName;
     }
-    
+
     /**
      * 상품 개별 가격을 반환하는 메소드
      *
@@ -54,7 +54,7 @@ public class Sale
     {
         return unitPrice;
     }
-    
+
     /**
      * 상품 수량을 반환하는 메소드
      *
@@ -64,7 +64,7 @@ public class Sale
     {
         return quantity;
     }
-    
+
     /**
      * 최종 가격을 반환하는 메소드
      *
@@ -72,6 +72,18 @@ public class Sale
      */
     public int getTotalPrice()
     {
+        return totalPrice;
+    }
+
+    /**
+     * 상품의 단가와 수량을 곱하여 상품별 총액을 계산하는 메소드
+     *
+     * @return totalPrice 
+     */
+    public int calculateItemTotal()
+    {
+        totalPrice = unitPrice * quantity;
+
         return totalPrice;
     }
 }
