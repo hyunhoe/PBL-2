@@ -3,8 +3,8 @@ import java.util.InputMismatchException;
 /**
  * POST 클래스의 설명을 작성하세요.
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (9팀_2025310070 와뇨니 에즈라 브래들리, 2023320023 이현회, 2023320017 정윤재, 2025320057 홍권찬)
+ * @version (2026.06.12.)
  */
 public class POST
 {
@@ -13,7 +13,7 @@ public class POST
     private Sale[] saleDB;
     private int productCount;
     private int saleCount;
-    
+
     private final int MAX_PRODUCTS = 6;
     private final int MAX_SALES = 20;
 
@@ -36,22 +36,21 @@ public class POST
      * 
      */
     public void saveProductDB() {
-            // 주류: 최종 판매가 기준으로 원가를 역산해서 저장
-            int[] codes = {1017, 1024, 1115, 7741, 2613, 5925};
-            int[] types = {1, 2, 1, 0, 0, 0};
-            double[] prices = {892.1863, 2166.7245, 1549.5868, 2454.5455, 1818.1818, 1818.1818};
-            String[] names = {
+        int[] codes = {1017, 1024, 1115, 7741, 2613, 5925};
+        int[] types = {1, 2, 1, 0, 0, 0};
+        double[] prices = {892.1863, 2166.7245, 1549.5868, 2454.5455, 1818.1818, 1818.1818};
+        String[] names = {
                 "참이슬(후)", "카스캔500ml", "하이트)진로16.0도페트640ML",
                 "티오피)더블랙캔275ml", "칠성)펩시콜라355ml", "칠성)칠성사이다제로355ml"
             };
-    
-            for (int i = 0; i < codes.length; i++) {
-                productDB[i][0] = codes[i];
-                productDB[i][1] = types[i];
-                productDB[i][2] = prices[i];
-                productNameDB[i] = names[i];
-            }
-            productCount = codes.length; // 등록한 상품 개수
+
+        for (int i = 0; i < codes.length; i++) {
+            productDB[i][0] = codes[i];
+            productDB[i][1] = types[i];
+            productDB[i][2] = prices[i];
+            productNameDB[i] = names[i];
+        }
+        productCount = codes.length;
     }
 
     /**
@@ -141,11 +140,11 @@ public class POST
      */
     public void calculateAllTotal()
     {
-        
+
         Scanner sc = new Scanner(System.in);
         Products[] inputProducts;
         int[] inputQuantities;
-        
+
         int code;
         int productIndex;
         int quantity;
@@ -159,8 +158,7 @@ public class POST
 
         while (true) {
             System.out.print("바코드 뒷자리 입력, 상품 입력 종료는 0: ");
-            
-            //예외처리
+
             try{
                 code = sc.nextInt();
             }
@@ -181,7 +179,7 @@ public class POST
 
             }else{
                 Products product = createProduct(productIndex);
-                
+
                 System.out.print("수량 입력: ");
                 try{
                     quantity = sc.nextInt();
@@ -196,7 +194,6 @@ public class POST
                 inputQuantities[inputCount] = quantity;
                 inputCount++;
 
-                // 상품을 입력 출력
                 printProductInfo(inputProducts, inputQuantities, inputCount);
 
                 totalAmount = (int)calculateTotalPrice(inputProducts, inputQuantities, inputCount);
@@ -269,7 +266,6 @@ public class POST
      */
     public double calculateTotalPrice(Products[] inputProducts, int[] inputQuantities, int inputCount)
     {
-        // 여기에 코드를 작성하세요.
         int totalAmount = 0;
         for (int i = 0 ; i < inputCount ; i++){
             totalAmount = totalAmount + (int)inputProducts[i].calculatePayment()*inputQuantities[i];
@@ -286,7 +282,6 @@ public class POST
      */
     public double calculateAllVAT(Products[] inputProducts, int[] inputQuantities, int inputCount)
     {
-        // 여기에 코드를 작성하세요.
         int vat;
         int totalVAT = 0;
 
@@ -357,7 +352,7 @@ public class POST
             itemVAT = vat * inputQuantities[i];
 
             System.out.println(inputProducts[i].getName() + "\t"+ inputQuantities[i] + "\t" +itemTotal);
-            
+
             System.out.println("------------------------");
         }
 

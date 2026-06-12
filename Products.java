@@ -2,8 +2,8 @@
  * Products - 모든 상품의 공통 정보를 저장하는 추상 슈퍼클래스 
  * 상품코드, 상품명, 가격 정보를 가지며 서브클래스(Beverages와 AlcoholicDrinks)가 상속받아 사용한다. 
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (9팀_2025310070 와뇨니 에즈라 브래들리, 2023320023 이현회, 2023320017 정윤재, 2025320057 홍권찬)
+ * @version (2026.06.12.)
  */
 public abstract class Products 
 {

@@ -2,14 +2,14 @@
 /**
  * AlcoholicDrinks - 주류 상품을 담당하는 클래스 
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (9팀_2025310070 와뇨니 에즈라 브래들리, 2023320023 이현회, 2023320017 정윤재, 2025320057 홍권찬)
+ * @version (2026.06.12.)
  */
 public class AlcoholicDrinks extends Products implements TAX
 {
     private String AlcoholType;
     private double taxAlcohol;
-    private int typeNo; // 1일때 소주 아니면 맥주
+    private int typeNo; 
 
     /**
      * AlcoholicDrinks 클래스의 객체 생성자
