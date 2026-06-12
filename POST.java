@@ -32,37 +32,22 @@ public class POST
      * 
      */
     public void saveProductDB() {
-        productDB[0][0] = 1017;
-        productDB[0][1] = 1;
-        productDB[0][2] = 892.1863;
-        productNameDB[0] = "참이슬(후)";
-
-        productDB[1][0] = 1024;
-        productDB[1][1] = 2;
-        productDB[1][2] = 2166.7245;
-        productNameDB[1] = "카스캔500ml";
-
-        productDB[2][0] = 1115;
-        productDB[2][1] = 1;
-        productDB[2][2] = 1549.5868;
-        productNameDB[2] = "하이트)진로16.0도페트640ML";
-
-        productDB[3][0] = 7741;
-        productDB[3][1] = 0;
-        productDB[3][2] = 2454.5455;
-        productNameDB[3] = "티오피)더블랙캔275ml";
-
-        productDB[4][0] = 2613;
-        productDB[4][1] = 0;
-        productDB[4][2] = 1818.1818;
-        productNameDB[4] = "칠성)펩시콜라355ml";
-
-        productDB[5][0] = 5925;
-        productDB[5][1] = 0;
-        productDB[5][2] = 1818.1818;
-        productNameDB[5] = "칠성)칠성사이다제로355ml";
-
-        productCount = 6; // 등록한 상품 개수
+            // 주류: 최종 판매가 기준으로 원가를 역산해서 저장
+            int[] codes = {1017, 1024, 1115, 7741, 2613, 5925};
+            int[] types = {1, 2, 1, 0, 0, 0};
+            double[] prices = {892.1863, 2166.7245, 1549.5868, 2454.5455, 1818.1818, 1818.1818};
+            String[] names = {
+                "참이슬(후)", "카스캔500ml", "하이트)진로16.0도페트640ML",
+                "티오피)더블랙캔275ml", "칠성)펩시콜라355ml", "칠성)칠성사이다제로355ml"
+            };
+    
+            for (int i = 0; i < codes.length; i++) {
+                productDB[i][0] = codes[i];
+                productDB[i][1] = types[i];
+                productDB[i][2] = prices[i];
+                productNameDB[i] = names[i];
+            }
+            productCount = codes.length; // 등록한 상품 개수
     }
 
     /**
