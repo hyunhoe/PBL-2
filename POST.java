@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 /**
  * POST 클래스의 설명을 작성하세요.
  *
@@ -12,15 +13,18 @@ public class POST
     private Sale[] saleDB;
     private int productCount;
     private int saleCount;
+    
+    private final int MAX_PRODUCTS = 6;
+    private final int MAX_SALES = 20;
 
     /**
      * POST 클래스의 객체 생성자
      */
     public POST()
     {
-        productDB = new double[6][3]; 
-        productNameDB = new String[6];
-        saleDB = new Sale[20];
+        productDB = new double[MAX_PRODUCTS][3]; 
+        productNameDB = new String[MAX_PRODUCTS];
+        saleDB = new Sale[MAX_SALES];
 
         productCount = 0;
         saleCount = 0;
@@ -155,7 +159,16 @@ public class POST
 
         while (true) {
             System.out.print("바코드 뒷자리 입력, 상품 입력 종료는 0: ");
-            code = sc.nextInt();
+            
+            //예외처리
+            try{
+                code = sc.nextInt();
+            }
+            catch (InputMismatchException e){
+                System.out.println("오류: 숫자만 입력해주세요!");
+                sc.nextLine(); 
+                continue;
+            }
 
             if (code == 0){
                 break;
@@ -168,9 +181,16 @@ public class POST
 
             }else{
                 Products product = createProduct(productIndex);
-
+                
                 System.out.print("수량 입력: ");
-                quantity = sc.nextInt();
+                try{
+                    quantity = sc.nextInt();
+                }
+                catch (InputMismatchException e) {
+                    System.out.println("오류: 수량은 숫자로 입력해주세요! 처음부터 다시 시도하세요.");
+                    sc.nextLine(); 
+                    continue; 
+                }
 
                 inputProducts[inputCount] = product;
                 inputQuantities[inputCount] = quantity;
@@ -192,8 +212,16 @@ public class POST
 
         totalAmount = (int)calculateTotalPrice(inputProducts, inputQuantities, inputCount);
 
-        System.out.println("받은 현금 입력: ");
-        receivedAmount = sc.nextInt();
+        while (true){
+            System.out.print("받은 현금 입력: ");
+            try {
+                receivedAmount = sc.nextInt();
+                break; 
+            } catch (InputMismatchException e) {
+                System.out.println("오류: 금액은 숫자로만 입력해주세요!");
+                sc.nextLine();
+            }
+        }
 
         balance = (int)calculateBalance(receivedAmount, totalAmount);
 
