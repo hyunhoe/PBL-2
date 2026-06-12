@@ -350,11 +350,11 @@ public class POST
             System.out.println("------------------------");
         }
 
-        System.out.println("총 부가가치세: " + totalVAT + "원");
-        System.out.println("총 결제금액: " + totalAmount + "원");
-        System.out.println("받은 현금: " + receivedAmount + "원");
-        System.out.println("거스름돈: " + balance + "원");
-        System.out.println("판매정보가 판매DB에 저장되었습니다.");
+        System.out.println("\t총 부가가치세:\t " + totalVAT + "원");
+        System.out.println("\t총 결제금액:\t " + totalAmount + "원");
+        System.out.println("\t받은 현금:\t " + receivedAmount + "원");
+        System.out.println("\t거스름돈:\t " + balance + "원");
+        System.out.println("\t판매정보가 판매DB에 저장되었습니다.");
         System.out.println("====== 결제 종료 =====");
     }
 
