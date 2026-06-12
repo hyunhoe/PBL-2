@@ -169,7 +169,7 @@ public class POST
         inputQuantities = new int[20];
 
         while (true) {
-            System.out.print("바코드 뒤자리 입력, 상품 입력 종료는 0: ");
+            System.out.print("바코드 뒷자리 입력, 상품 입력 종료는 0: ");
             code = sc.nextInt();
 
             if (code == 0){
@@ -240,7 +240,7 @@ public class POST
             itemTotal = unitPrice * inputQuantities[i];
 
             System.out.println("상품: " + inputProducts[i].getName());
-            System.out.println("바코드 뒤자리: " + inputProducts[i].getCode());
+            System.out.println("바코드 뒷자리: " + inputProducts[i].getCode());
             System.out.println("수량: " + inputQuantities[i]);
             System.out.println("단가: " + unitPrice + "원");
             System.out.println("상품 금액: " + itemTotal + "원");
