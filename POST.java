@@ -334,6 +334,7 @@ public class POST
 
         System.out.println();
         System.out.println("====== 영수증 ======");
+        System.out.println("\t상품명" + "\t수량" + "\t금액(원)");
 
         for (int i = 0 ; i < inputCount ; i++ ){
             unitPrice = (int)inputProducts[i].calculatePayment();
@@ -342,11 +343,8 @@ public class POST
             vat = (int)(inputProducts[i].calculateVAT() + 0.5);
             itemVAT = vat * inputQuantities[i];
 
-            System.out.println("상품: " + inputProducts[i].getName());
-            System.out.println("수량: " + inputQuantities[i]);
-            System.out.println("단가: " + unitPrice + "원");
-            System.out.println("부가가치세: " + itemVAT + "원");
-            System.out.println("상품  금액: " + itemTotal + "원");
+            System.out.println(inputProducts[i].getName() + "\t"+ inputQuantities[i] + "\t" +itemTotal);
+            
             System.out.println("------------------------");
         }
 
